@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+$handle = @fopen("/Users/dalkire/scripts/phpmd.pi_hull.txt", "r");
+if ($handle) {
+  while (($buffer = fgets($handle, 4096)) !== false) {
+    $ln = $buffer;
+    print_r(explode("\t", $ln));
+  }
+  if (!feof($handle)) {
+    echo "Error: unexpected fgets() fail\n";
+  }
+  fclose($handle);
+}
